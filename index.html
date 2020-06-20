@@ -56,6 +56,29 @@
       </div>
     </div>
 
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.3/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: 'AIzaSyDPezNiXCaXzRI_AEoGWnwWh62L7QASGZs',
+        authDomain: 'd3-firebase-26e06.firebaseapp.com',
+        databaseURL: 'https://d3-firebase-26e06.firebaseio.com',
+        projectId: 'd3-firebase-26e06',
+        storageBucket: 'd3-firebase-26e06.appspot.com',
+        messagingSenderId: '507359261728',
+        appId: '1:507359261728:web:7bd9f22fa1e5602d0af845',
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore();
+    </script>
+
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.js"></script>
