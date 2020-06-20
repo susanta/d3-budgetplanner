@@ -30,19 +30,29 @@ const arcPath = d3
 
 // console.log(arcPath(angles[0]));
 
+// ordinal scale
+const colour = d3.scaleOrdinal(d3['schemeSet3']);
+
 // update function
 const update = (data) => {
   // console.log(data);
+
+  // update colour scale domain
+  colour.domain(data.map((d) => d.name));
+
   // join enhanced (pie) data to path elements
   const paths = graph.selectAll('path').data(pie(data));
   //   console.log(paths.enter());
+
+  //   console.log(pie(data));
   paths
     .enter()
     .append('path')
     .attr('class', 'arc')
     .attr('d', arcPath)
     .attr('stroke', '#fff')
-    .attr('stroke-width', 3);
+    .attr('stroke-width', 3)
+    .attr('fill', (d) => colour(d.data.name));
 };
 
 // data array and firestore
