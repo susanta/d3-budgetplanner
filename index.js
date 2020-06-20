@@ -12,7 +12,7 @@ form.addEventListener('submit', (e) => {
       cost: parseInt(cost.value),
     };
 
-    db.collection('expens')
+    db.collection('expenses')
       .add(item)
       .then((res) => {
         error.textContent = '';
