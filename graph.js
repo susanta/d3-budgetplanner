@@ -92,7 +92,8 @@ const update = (data) => {
   graph
     .selectAll('path')
     .on('mouseover', handleMouseOver)
-    .on('mouseout', handleMouseOut);
+    .on('mouseout', handleMouseOut)
+    .on('click', handleClick);
 };
 
 // data array and firestore
@@ -169,4 +170,10 @@ const handleMouseOut = (d, i, n) => {
     .transition('changeSliceFill')
     .duration(300)
     .attr('fill', colour(d.data.name));
+};
+
+const handleClick = (d) => {
+  // console.log(d);
+  const id = d.data.id;
+  db.collection('expenses').doc(id).delete();
 };
