@@ -53,7 +53,7 @@ const update = (data) => {
   // update colour scale domain
   colour.domain(data.map((d) => d.name));
 
-  //   update ans call legend
+  //   update and call legend
   legendGroup.call(legend);
   legendGroup.selectAll('text').attr('fill', 'white');
 
@@ -86,6 +86,13 @@ const update = (data) => {
     .transition()
     .duration(750)
     .attrTween('d', arcTweenEnter);
+
+  // add events
+  // handleMouseOver automatically passes d=data, i=index, n=number of elements when call
+  graph
+    .selectAll('path')
+    .on('mouseover', handleMouseOver)
+    .on('mouseout', handleMouseOut);
 };
 
 // data array and firestore
@@ -146,3 +153,14 @@ function arcTweenUpdate(d) {
     return arcPath(i(t));
   };
 }
+
+// event handlers
+const handleMouseOver = (d, i, n) => {
+  // console.log(n[i]);
+  d3.select(n[i]).transition().duration(300).attr('fill', '#fff');
+};
+
+const handleMouseOut = (d, i, n) => {
+  // console.log(n[i]);
+  d3.select(n[i]).transition().duration(300).attr('fill', colour(d.data.name));
+};
